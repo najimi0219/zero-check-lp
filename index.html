@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja">
+<html lang="ja" class="scroll-smooth">
 
 <head>
   <meta charset="utf-8" />
@@ -54,10 +54,71 @@
       background: linear-gradient(90deg, transparent, rgba(0, 127, 255, 0.35), transparent);
       height: 1px;
     }
+
+    /* Scroll fade-in */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Staggered children */
+    .stagger > .fade-up:nth-child(1) { transition-delay: 0s; }
+    .stagger > .fade-up:nth-child(2) { transition-delay: 0.15s; }
+    .stagger > .fade-up:nth-child(3) { transition-delay: 0.3s; }
+    .stagger > .fade-up:nth-child(4) { transition-delay: 0.45s; }
+
+    /* CTA pulse */
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0, 127, 255, 0.5); }
+      50% { box-shadow: 0 0 0 12px rgba(0, 127, 255, 0); }
+    }
+    .cta-pulse {
+      animation: pulse-glow 2.5s ease-in-out infinite;
+    }
+    .cta-pulse:hover {
+      animation: none;
+      transform: translateY(-2px);
+      transition: transform 0.2s ease;
+    }
+
+    /* Card hover lift */
+    .card-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-lift:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+    }
+
+    /* FAQ smooth open */
+    details .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+      opacity: 0;
+    }
+    details[open] .faq-answer {
+      max-height: 200px;
+      opacity: 1;
+    }
+
+    /* Hero image entrance */
+    @keyframes hero-in {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .hero-animate {
+      animation: hero-in 0.8s ease-out both;
+    }
   </style>
 </head>
 
-<body class="text-brand.ink">
+<body class="text-brand.ink pb-20 md:pb-0">
 
   <!-- Top bar -->
   <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-brand.line">
@@ -90,7 +151,7 @@
   <main id="top" class="bg-hero">
     <div class="max-w-6xl mx-auto px-4 pt-10 pb-14">
       <!-- ① ヒービジュアル（上部・全幅） -->
-      <div class="mb-8 rounded-3xl overflow-hidden shadow-soft">
+      <div class="mb-8 rounded-3xl overflow-hidden shadow-soft hero-animate">
         <img src="assets/hero-visual.jpg" alt="理想のマイホームをお得に購入" class="w-full object-contain" />
       </div>
       <div class="max-w-xl mx-auto">
@@ -103,7 +164,7 @@
 
           <div class="mt-5 flex flex-col gap-3">
             <a href="#form"
-              class="inline-flex items-center justify-center rounded-2xl bg-brand.green px-6 py-4 text-white font-extrabold text-lg shadow-soft hover:bg-brand.green2 transition">
+              class="cta-pulse inline-flex items-center justify-center rounded-2xl bg-brand.green px-6 py-4 text-white font-extrabold text-lg shadow-soft hover:bg-brand.green2 transition">
               まずは無料で相談する
             </a>
             <a href="#"
@@ -120,18 +181,18 @@
   <!-- Problem -->
   <section class="bg-gray-50 border-y border-brand.line">
     <div class="max-w-6xl mx-auto px-4 py-12">
-      <img src="assets/worries.jpg" alt="こんなお悩みありませんか？" class="w-full" />
-      <img src="assets/solution.jpg" alt="その悩みZeroCheckにお任せ下さい！" class="w-full" />
+      <img src="assets/worries.jpg" alt="こんなお悩みありませんか？" class="w-full fade-up" />
+      <img src="assets/solution.jpg" alt="その悩みZeroCheckにお任せ下さい！" class="w-full fade-up" />
     </div>
   </section>
 
   <!-- Features -->
   <section class="bg-white">
     <div class="max-w-6xl mx-auto px-4 py-14">
-      <h2 class="text-center text-2xl font-extrabold">ゼロチェックが選ばれる理由</h2>
-      <p class="mt-2 text-center text-gray-600">「買う前に、費用と交渉余地を見える化」します</p>
+      <h2 class="text-center text-2xl font-extrabold fade-up">ゼロチェックが選ばれる理由</h2>
+      <p class="mt-2 text-center text-gray-600 fade-up">「買う前に、費用と交渉余地を見える化」します</p>
 
-      <div class="mt-10">
+      <div class="mt-10 fade-up">
         <img src="assets/features.jpg" alt="ゼロチェックが選ばれる4つの理由" class="w-full max-w-2xl mx-auto block" />
       </div>
 
@@ -148,16 +209,16 @@
   <!-- How 0yen works -->
   <section class="bg-mint border-y border-brand.line">
     <div class="max-w-6xl mx-auto px-4 py-14">
-      <h2 class="text-center text-2xl font-extrabold">手数料0円の仕組み</h2>
-      <div class="mt-10 grid lg:grid-cols-2 gap-6">
-        <div class="rounded-3xl bg-white border border-brand.line p-6 shadow-soft">
+      <h2 class="text-center text-2xl font-extrabold fade-up">手数料0円の仕組み</h2>
+      <div class="mt-10 grid lg:grid-cols-2 gap-6 stagger">
+        <div class="rounded-3xl bg-white border border-brand.line p-6 shadow-soft card-lift fade-up">
           <div class="font-extrabold text-lg">一般的な不動産の仲介</div>
           <p class="mt-2 text-gray-700">買主側・売主側の仲介会社が入り、手数料が発生するケースが一般的です。</p>
           <div class="mt-4 rounded-2xl bg-gray-50 border border-brand.line p-4 text-sm text-gray-600">
             例：買主→仲介手数料→仲介会社 / 売主→仲介手数料→仲介会社
           </div>
         </div>
-        <div class="rounded-3xl bg-brand.green text-white p-6 shadow-soft">
+        <div class="rounded-3xl bg-brand.green text-white p-6 shadow-soft card-lift fade-up">
           <div class="font-extrabold text-lg">ゼロチェックの場合</div>
           <p class="mt-2 text-white/90">物件や取引形態により、買主側手数料を最大0円にできるケースがあります。</p>
           <div class="mt-4 rounded-2xl bg-white/10 border border-white/20 p-4 text-sm text-white/90">
@@ -183,23 +244,23 @@
   <!-- Voices -->
   <section class="bg-white">
     <div class="max-w-6xl mx-auto px-4 py-14">
-      <h2 class="text-center text-2xl font-extrabold">お客様の声</h2>
-      <div class="mt-10 grid md:grid-cols-3 gap-6">
-        <div class="rounded-3xl bg-white border border-brand.line p-6 shadow-soft">
+      <h2 class="text-center text-2xl font-extrabold fade-up">お客様の声</h2>
+      <div class="mt-10 grid md:grid-cols-3 gap-6 stagger">
+        <div class="rounded-3xl bg-white border border-brand.line p-6 shadow-soft card-lift fade-up">
           <!-- ④-a お客様アバター1 -->
           <img src="assets/voice-01.png" alt="お客様01" class="w-16 h-16 rounded-full object-cover mx-auto mb-3" />
           <div class="text-sm text-brand.green font-bold">新築マンション</div>
           <div class="mt-2 font-extrabold">手数料が想像以上に安くなった</div>
           <p class="mt-3 text-gray-700 text-sm">諦めていた物件が手数料交渉で予算内に収まりました。</p>
         </div>
-        <div class="rounded-3xl bg-white border border-brand.line p-6 shadow-soft">
+        <div class="rounded-3xl bg-white border border-brand.line p-6 shadow-soft card-lift fade-up">
           <!-- ④-b お客様アバター2 -->
           <img src="assets/voice-02.png" alt="お客様02" class="w-16 h-16 rounded-full object-cover mx-auto mb-3" />
           <div class="text-sm text-brand.green font-bold">中古マンション</div>
           <div class="mt-2 font-extrabold">費用が見える化されて安心</div>
           <p class="mt-3 text-gray-700 text-sm">購入前に諸費用の全体像がわかり、資金計画が立てやすかったです。</p>
         </div>
-        <div class="rounded-3xl bg-white border border-brand.line p-6 shadow-soft">
+        <div class="rounded-3xl bg-white border border-brand.line p-6 shadow-soft card-lift fade-up">
           <!-- ④-c お客様アバター3 -->
           <img src="assets/voice-03.png" alt="お客様03" class="w-16 h-16 rounded-full object-cover mx-auto mb-3" />
           <div class="text-sm text-brand.green font-bold">中古戸建て</div>
@@ -220,14 +281,14 @@
   <!-- Flow -->
   <section class="bg-white">
     <div class="max-w-6xl mx-auto px-4 py-14">
-      <h2 class="text-center text-2xl font-extrabold">ご契約までのフロー</h2>
+      <h2 class="text-center text-2xl font-extrabold fade-up">ご契約までのフロー</h2>
       <!-- ⑤ フロー図 -->
       <div class="mt-8 rounded-3xl overflow-hidden shadow-soft">
         <img src="assets/flow-diagram.png" alt="ご契約までのフロー図" class="w-full object-cover" />
       </div>
 
-      <div class="mt-10 grid md:grid-cols-2 gap-6">
-        <div class="rounded-3xl bg-gray-50 border border-brand.line p-6">
+      <div class="mt-10 grid md:grid-cols-2 gap-6 stagger">
+        <div class="rounded-3xl bg-gray-50 border border-brand.line p-6 card-lift fade-up">
           <div class="font-extrabold text-lg">すでに物件が決まっている方</div>
           <ul class="mt-4 space-y-2 text-gray-700">
             <li class="flex gap-2"><span class="text-brand.green font-bold">•</span> 物件URLを送る</li>
@@ -235,7 +296,7 @@
             <li class="flex gap-2"><span class="text-brand.green font-bold">•</span> 条件合意後に契約へ</li>
           </ul>
         </div>
-        <div class="rounded-3xl bg-gray-50 border border-brand.line p-6">
+        <div class="rounded-3xl bg-gray-50 border border-brand.line p-6 card-lift fade-up">
           <div class="font-extrabold text-lg">これから物件を探す方</div>
           <ul class="mt-4 space-y-2 text-gray-700">
             <li class="flex gap-2"><span class="text-brand.green font-bold">•</span> 探し方・条件整理からサポート</li>
@@ -250,7 +311,7 @@
   <!-- FAQ -->
   <section class="bg-mint border-y border-brand.line">
     <div class="max-w-3xl mx-auto px-4 py-14">
-      <h2 class="text-center text-2xl font-extrabold">よくある質問</h2>
+      <h2 class="text-center text-2xl font-extrabold fade-up">よくある質問</h2>
       <div class="mt-10 space-y-5">
         <details class="rounded-3xl bg-white border border-brand.line shadow-soft p-6 group">
           <summary class="flex items-center gap-3 cursor-pointer font-semibold list-none">
@@ -292,7 +353,7 @@
   <!-- Contact Form -->
   <section id="form" class="bg-white">
     <div class="max-w-2xl mx-auto px-4 py-14">
-      <h2 class="text-center text-2xl font-extrabold">無料相談フォーム</h2>
+      <h2 class="text-center text-2xl font-extrabold fade-up">無料相談フォーム</h2>
       <p class="mt-2 text-center text-gray-600">まずは気軽にご連絡ください</p>
 
       <form class="mt-10 space-y-5" onsubmit="return false;">
@@ -356,8 +417,34 @@
     </div>
   </footer>
 
+  <!-- Mobile Fixed Footer Bar -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white/95 backdrop-blur border-t border-brand.line px-4 py-3 shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
+    <div class="flex gap-3">
+      <a href="#form"
+        class="flex-1 inline-flex items-center justify-center rounded-xl bg-brand.green px-4 py-3 text-white font-bold text-sm shadow-soft hover:bg-brand.green2 transition">
+        無料で相談する
+      </a>
+      <a href="#"
+        class="flex-1 inline-flex items-center justify-center rounded-xl bg-line.green px-4 py-3 text-white font-bold text-sm hover:bg-line.green2 transition">
+        LINEで相談
+      </a>
+    </div>
+  </div>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Scroll fade-in with Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   </script>
 </body>
 
