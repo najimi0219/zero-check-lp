@@ -7,6 +7,15 @@
   <title>ゼロチェック｜仲介手数料最大0円で理想の物件購入</title>
   <meta name="description" content="ゼロチェックは、不動産売買物件の仲介手数料が最大0円。気になる物件URLを送るだけで、購入諸費用を抑えた提案をします。" />
 
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-09PKXBST40"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-09PKXBST40');
+  </script>
+
   <!-- OGP (必要なら差し替え) -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="ゼロチェック｜仲介手数料最大0円で理想の物件購入" />
@@ -445,6 +454,66 @@
     }, { threshold: 0.15 });
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // GA4 Event Tracking
+    // CTA buttons (form links)
+    document.querySelectorAll('a[href="#form"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        gtag('event', 'cta_click', {
+          event_category: 'engagement',
+          event_label: btn.textContent.trim()
+        });
+      });
+    });
+
+    // LINE buttons
+    document.querySelectorAll('a[href*="line"], a.bg-line\\.green, [class*="line.green"]').forEach(btn => {
+      if (btn.textContent.includes('LINE')) {
+        btn.addEventListener('click', () => {
+          gtag('event', 'line_click', {
+            event_category: 'engagement',
+            event_label: 'LINE相談'
+          });
+        });
+      }
+    });
+
+    // Phone tap (mobile)
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+      link.addEventListener('click', () => {
+        gtag('event', 'phone_tap', {
+          event_category: 'engagement',
+          event_label: '電話タップ'
+        });
+      });
+    });
+
+    // Form submit
+    const form = document.querySelector('#form form');
+    if (form) {
+      form.addEventListener('submit', () => {
+        gtag('event', 'form_submit', {
+          event_category: 'conversion',
+          event_label: '無料相談フォーム送信'
+        });
+      });
+    }
+
+    // Scroll depth tracking (25%, 50%, 75%, 100%)
+    const scrollMarks = [25, 50, 75, 100];
+    const scrollFired = {};
+    window.addEventListener('scroll', () => {
+      const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      scrollMarks.forEach(mark => {
+        if (pct >= mark && !scrollFired[mark]) {
+          scrollFired[mark] = true;
+          gtag('event', 'scroll_depth', {
+            event_category: 'engagement',
+            event_label: mark + '%'
+          });
+        }
+      });
+    });
   </script>
 </body>
 
