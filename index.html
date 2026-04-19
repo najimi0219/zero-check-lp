@@ -148,10 +148,6 @@
           class="inline-flex items-center justify-center rounded-full bg-brand.green px-5 py-2 text-white font-semibold shadow-soft hover:bg-brand.green2 transition">
           お問い合わせ
         </a>
-        <a href="#"
-          class="inline-flex items-center justify-center rounded-full bg-line.green px-4 py-2 text-white font-semibold hover:bg-line.green2 transition">
-          LINEで相談
-        </a>
       </div>
     </div>
   </header>
@@ -175,10 +171,6 @@
             <a href="#form"
               class="cta-pulse inline-flex items-center justify-center rounded-2xl bg-brand.green px-6 py-4 text-white font-extrabold text-lg shadow-soft hover:bg-brand.green2 transition">
               まずは無料で相談する
-            </a>
-            <a href="#"
-              class="inline-flex items-center justify-center rounded-2xl bg-line.green px-6 py-3 text-white font-semibold hover:bg-line.green2 transition">
-              LINEで気軽に相談
             </a>
             <div class="text-center text-xs text-gray-500">※相談だけでもOK / しつこい営業はしません</div>
           </div>
@@ -373,25 +365,28 @@
       <h2 class="text-center text-2xl font-extrabold fade-up">無料相談フォーム</h2>
       <p class="mt-2 text-center text-gray-600">まずは気軽にご連絡ください</p>
 
-      <form class="mt-10 space-y-5" onsubmit="return false;">
+      <form id="contact-form" class="mt-10 space-y-5" action="https://formspree.io/f/xykljvak" method="POST">
+        <input type="hidden" name="_subject" value="【ゼロチェック】新しいお問い合わせ" />
+        <input type="hidden" name="_next" value="https://zero-check.jp#form" />
+        <input type="text" name="_gotcha" style="display:none" />
         <div>
           <label class="block text-sm font-semibold mb-1">お名前 <span class="text-red-500">*</span></label>
-          <input type="text" required placeholder="山田 太郎"
+          <input type="text" name="name" required placeholder="山田 太郎"
             class="w-full rounded-2xl border border-brand.line px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand.green" />
         </div>
         <div>
           <label class="block text-sm font-semibold mb-1">メールアドレス <span class="text-red-500">*</span></label>
-          <input type="email" required placeholder="example@email.com"
+          <input type="email" name="email" required placeholder="example@email.com"
             class="w-full rounded-2xl border border-brand.line px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand.green" />
         </div>
         <div>
           <label class="block text-sm font-semibold mb-1">電話番号</label>
-          <input type="tel" placeholder="090-0000-0000"
+          <input type="tel" name="phone" placeholder="090-0000-0000"
             class="w-full rounded-2xl border border-brand.line px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand.green" />
         </div>
         <div>
           <label class="block text-sm font-semibold mb-1">気になる物件URL・ご相談内容 <span class="text-red-500">*</span></label>
-          <textarea required rows="5" placeholder="物件URLを貼り付けるか、ご相談内容をお書きください"
+          <textarea name="message" required rows="5" placeholder="物件URLを貼り付けるか、ご相談内容をお書きください"
             class="w-full rounded-2xl border border-brand.line px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand.green"></textarea>
         </div>
         <button type="submit"
@@ -400,6 +395,12 @@
         </button>
         <p class="text-center text-xs text-gray-500">送信後、担当者からご連絡いたします（通常1営業日以内）</p>
       </form>
+
+      <!-- 送信完了メッセージ -->
+      <div id="form-thanks" class="mt-10 hidden rounded-3xl bg-brand.mint border border-brand.green p-8 text-center">
+        <div class="text-2xl font-extrabold text-brand.green">送信が完了しました</div>
+        <p class="mt-3 text-gray-700">お問い合わせありがとうございます。<br>担当者より1営業日以内にご連絡いたします。</p>
+      </div>
     </div>
   </section>
 
@@ -441,10 +442,6 @@
         class="flex-1 inline-flex items-center justify-center rounded-xl bg-brand.green px-4 py-3 text-white font-bold text-sm shadow-soft hover:bg-brand.green2 transition">
         無料で相談する
       </a>
-      <a href="#"
-        class="flex-1 inline-flex items-center justify-center rounded-xl bg-line.green px-4 py-3 text-white font-bold text-sm hover:bg-line.green2 transition">
-        LINEで相談
-      </a>
     </div>
   </div>
 
@@ -472,18 +469,6 @@
           event_label: btn.textContent.trim()
         });
       });
-    });
-
-    // LINE buttons
-    document.querySelectorAll('a[href*="line"], a.bg-line\\.green, [class*="line.green"]').forEach(btn => {
-      if (btn.textContent.includes('LINE')) {
-        btn.addEventListener('click', () => {
-          gtag('event', 'line_click', {
-            event_category: 'engagement',
-            event_label: 'LINE相談'
-          });
-        });
-      }
     });
 
     // Phone tap (mobile)
