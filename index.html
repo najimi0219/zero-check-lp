@@ -7,13 +7,15 @@
   <title>ゼロチェック｜仲介手数料最大0円で理想の物件購入</title>
   <meta name="description" content="ゼロチェックは、不動産売買物件の仲介手数料が最大0円。気になる物件URLを送るだけで、購入諸費用を抑えた提案をします。" />
 
-  <!-- Google Analytics 4 -->
+  <!-- Google Analytics 4 + Google Ads -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-09PKXBST40"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-09PKXBST40');
+    // Google Ads コンバージョンID（※Google広告管理画面で取得して差し替え）
+    gtag('config', 'AW-18095720223');
   </script>
 
   <!-- OGP (必要なら差し替え) -->
@@ -665,8 +667,12 @@
         </div>
         <div>
           <div class="font-semibold">会社概要</div>
-          <div class="mt-3">
-            <img src="assets/gaiyou.png" alt="会社概要" class="w-full max-w-xs" />
+          <div class="mt-3 text-white/70 text-sm space-y-1">
+            <p>Vivara Partner Co., Ltd.</p>
+            <p>東京都品川区東品川4-12-8 品川シーサイドイーストタワー15階</p>
+            <p>東京都知事（1）第113334号</p>
+            <p>TEL: 050-6883-9270</p>
+            <p>受付時間：9:00〜19:00</p>
           </div>
         </div>
       </div>
@@ -727,8 +733,17 @@
       });
     });
 
-    // GA4 Event Tracking
-    // CTA buttons (form links)
+    // ============================================
+    // Google Ads コンバージョンラベル設定
+    // ※ Google広告管理画面で発行されたラベルに差し替えてください
+    // ============================================
+    var GADS_CONVERSION_ID = 'AW-18095720223';
+    var GADS_LABEL_PHONE = 'A-o4CL71pakcEJ-O27RD';   // 電話コンバージョン
+    var GADS_LABEL_LINE  = 'F4_YCPauvakcEJ-O27RD';    // LINEコンバージョン
+    var GADS_LABEL_MAIL  = 'CWULCLXvpakcEJ-O27RD';    // メール(フォーム送信)コンバージョン
+
+    // GA4 Event Tracking + Google Ads Conversion
+    // ----- 1. メール（お問い合わせフォームリンク）-----
     document.querySelectorAll('a[href="#form"]').forEach(btn => {
       btn.addEventListener('click', () => {
         gtag('event', 'cta_click', {
@@ -738,23 +753,45 @@
       });
     });
 
-    // Phone tap (mobile)
+    // ----- 2. 電話タップ -----
     document.querySelectorAll('a[href^="tel:"]').forEach(link => {
       link.addEventListener('click', () => {
         gtag('event', 'phone_tap', {
           event_category: 'engagement',
           event_label: '電話タップ'
         });
+        // Google Ads コンバージョン（電話）
+        gtag('event', 'conversion', {
+          send_to: GADS_CONVERSION_ID + '/' + GADS_LABEL_PHONE
+        });
       });
     });
 
-    // Form submit
+    // ----- 3. LINEボタンクリック -----
+    document.querySelectorAll('a[href*="lin.ee"]').forEach(link => {
+      link.addEventListener('click', () => {
+        gtag('event', 'line_click', {
+          event_category: 'engagement',
+          event_label: 'LINE友達追加'
+        });
+        // Google Ads コンバージョン（LINE）
+        gtag('event', 'conversion', {
+          send_to: GADS_CONVERSION_ID + '/' + GADS_LABEL_LINE
+        });
+      });
+    });
+
+    // ----- 4. フォーム送信 -----
     const form = document.querySelector('#form form');
     if (form) {
       form.addEventListener('submit', () => {
         gtag('event', 'form_submit', {
           event_category: 'conversion',
           event_label: '無料相談フォーム送信'
+        });
+        // Google Ads コンバージョン（メール/フォーム送信）
+        gtag('event', 'conversion', {
+          send_to: GADS_CONVERSION_ID + '/' + GADS_LABEL_MAIL
         });
       });
     }
