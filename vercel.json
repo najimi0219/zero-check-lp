@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/value-map",
+      "destination": "https://zerocheck-report-app.vercel.app/reports/list"
+    },
+    {
+      "source": "/value-map/",
+      "destination": "https://zerocheck-report-app.vercel.app/reports/list"
+    },
+    {
+      "source": "/value-map/:path*",
+      "destination": "https://zerocheck-report-app.vercel.app/reports/list/:path*"
+    }
+  ]
+}
