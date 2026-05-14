@@ -764,6 +764,13 @@
     const form = document.querySelector('#form form');
     if (form) {
       form.addEventListener('submit', () => {
+        var ec_mail = document.querySelector('[name="email"]').value;
+        var ec_phone = document.querySelector('[name="phone"]').value;
+        gtag('set', 'user_data', {
+            "email": ec_mail,
+            "phone_number": ec_phone
+        });
+
         gtag('event', 'form_submit', {
           event_category: 'conversion',
           event_label: '無料相談フォーム送信'
