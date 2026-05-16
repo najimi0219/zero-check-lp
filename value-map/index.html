@@ -2,14 +2,17 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0;url=https://zerocheck-report-app.vercel.app/reports/list" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Value Map | ZeroCheck</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <title>口コミ評価 PLATFORM | ZeroCheck</title>
   <link rel="canonical" href="https://www.zero-check.jp/value-map" />
-  <meta name="description" content="ZeroCheck Value Map - 不動産物件の評価スコアをマップで確認" />
-  <script>window.location.replace("https://zerocheck-report-app.vercel.app/reports/list");</script>
+  <meta name="description" content="ZeroCheck Value Map - 不動産物件の口コミ評価スコアをマップで確認" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow: hidden; }
+    iframe { width: 100%; height: 100%; border: none; display: block; }
+  </style>
 </head>
 <body>
-  <p>リダイレクト中... <a href="https://zerocheck-report-app.vercel.app/reports/list">こちらをクリック</a></p>
+  <iframe src="https://zerocheck-report-app.vercel.app/reports/list" allow="geolocation"></iframe>
 </body>
 </html>
