@@ -10,14 +10,18 @@
   <!-- Google Fonts: Noto Sans JP -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18095720223"></script>
+  <!-- ヒーロー画像をプリロード（LCP改善） -->
+  <link rel="preload" as="image" href="assets/hero.png" type="image/png" />
+
+  <!-- Google Analytics 4 + Google Ads（統合・1回のみ読み込み） -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-09PKXBST40"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    gtag('config', 'G-09PKXBST40');
     gtag('config', 'AW-18095720223');
   </script>
   <!-- Event snippet for value map conversion page -->
@@ -29,24 +33,15 @@
     });
   </script>
 
-  <!-- Microsoft Clarity -->
+  <!-- Microsoft Clarity（遅延読み込み） -->
   <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "woqvvumefq");
-  </script>
-
-  <!-- Google Analytics 4 + Google Ads -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-09PKXBST40"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-09PKXBST40');
-    // Google Ads コンバージョンID（※Google広告管理画面で取得して差し替え）
-    gtag('config', 'AW-18095720223');
+    window.addEventListener('load', function(){
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "woqvvumefq");
+    });
   </script>
 
   <!-- OGP (必要なら差し替え) -->
@@ -55,30 +50,8 @@
   <meta property="og:description" content="仲介手数料最大0円。気になる物件URLを送るだけ。" />
   <meta property="og:image" content="assets/ogp.png" />
 
-  <!-- Tailwind (CDN) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'brand.green': '#007FFF',
-            'brand.green2': '#0066CC',
-            'brand.mint': '#EBF5FF',
-            'brand.orange': '#F57C00',
-            'brand.orange2': '#E86F00',
-            'brand.ink': '#1F2937',
-            'brand.line': '#E5E7EB',
-            'line.green': '#06C755',
-            'line.green2': '#05A847'
-          },
-          boxShadow: {
-            soft: '0 10px 30px rgba(0,0,0,0.08)'
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Tailwind CSS (ビルド済み) -->
+  <link rel="stylesheet" href="assets/tailwind.css" />
 
   <style>
     /* ちょい足し */
@@ -185,7 +158,7 @@
   <main id="top" class="bg-hero">
     <!-- ① ヒービジュアル（全幅・ドーン） -->
     <div class="w-full overflow-hidden hero-animate max-w-5xl mx-auto">
-      <img src="assets/hero.png" alt="仲介手数料0円って正直ちょっと不安。その不安まで0にしたい。" class="w-full object-cover" width="998" height="380" />
+      <img src="assets/hero.png" alt="仲介手数料0円って正直ちょっと不安。その不安まで0にしたい。" class="w-full object-cover" width="998" height="380" fetchpriority="high" />
     </div>
     <div class="max-w-6xl mx-auto px-4 pb-14">
       <div>
@@ -251,13 +224,13 @@
   <!-- お悩みセクション -->
   <section class="bg-white">
     <div class="max-w-6xl mx-auto px-4 py-10 fade-up">
-      <img loading="lazy" src="assets/nayami.webp" alt="不動産購入のこんなお悩みありませんか？" class="w-full block" width="1340" height="900" />
+      <img loading="lazy" src="assets/nayami.webp" alt="不動産購入のこんなお悩みありませんか？" class="w-full block" width="1536" height="1024" />
     </div>
   </section>
   <!-- 3つの機能 -->
   <section class="bg-white">
     <div class="max-w-6xl mx-auto px-4 py-10 fade-up">
-      <img loading="lazy" src="assets/3function.webp" alt="ゼロチェックなら3つの機能で解決" class="w-full block" />
+      <img loading="lazy" src="assets/3function.webp" alt="ゼロチェックなら3つの機能で解決" class="w-full block" width="1672" height="941" />
     </div>
   </section>
 
