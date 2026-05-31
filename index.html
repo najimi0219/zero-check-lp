@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
 
   <!-- ヒーロー画像をプリロード（LCP改善） -->
-  <link rel="preload" as="image" href="assets/hero.png" type="image/png" />
+  <link rel="preload" as="image" href="assets/hero2.webp" type="image/webp" />
 
   <!-- Google Analytics 4 + Google Ads（統合・1回のみ読み込み） -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-09PKXBST40"></script>
@@ -156,9 +156,23 @@
 
   <!-- HERO -->
   <main id="top" class="bg-hero">
-    <!-- ① ヒービジュアル（全幅・ドーン） -->
-    <div class="w-full overflow-hidden hero-animate max-w-5xl mx-auto">
-      <img src="assets/hero.png" alt="仲介手数料0円って正直ちょっと不安。その不安まで0にしたい。" class="w-full object-cover" width="998" height="380" fetchpriority="high" />
+    <!-- ① ヒービジュアル（背景画像 + テキストオーバーレイ） -->
+    <div class="w-full hero-animate max-w-5xl mx-auto relative overflow-hidden" style="aspect-ratio:998/380;">
+      <img src="assets/hero2.webp" alt="" class="w-full h-full object-cover" width="998" height="380" fetchpriority="high" />
+      <!-- テキストオーバーレイ -->
+      <div style="position:absolute; top:0; left:0; width:75%; height:100%; display:flex; flex-direction:column; justify-content:center; padding:3% 4%;">
+        <h1 style="margin:0; line-height:1.15; font-weight:900; color:#1a1a2e; font-size:clamp(1.2rem, 4.5vw, 2.8rem); white-space:nowrap;">
+          仲介手数料<span style="font-size:1.8em; font-weight:900; color:#007FFF;">0</span>円って、<br>
+          正直<span style="background:linear-gradient(transparent 60%, #FFEE58 60%);">ちょっと</span> <span style="font-size:1.4em; font-weight:900; color:#1a1a2e;">不安</span><span style="color:#1a1a2e;">。</span>
+        </h1>
+        <p style="margin:0; line-height:1.15; font-weight:900; color:#007FFF; font-size:clamp(1.1rem, 4.2vw, 2.6rem); white-space:nowrap;">
+          その <span style="font-size:1.4em;">不安</span> まで、<span style="background:linear-gradient(transparent 60%, #FFEE58 60%);"><span style="font-size:2em; font-weight:900;">0</span>にしたい。</span>
+        </p>
+        <p style="margin:0.4em 0 0; line-height:1.6; color:#555; font-size:clamp(0.7rem, 2.2vw, 1.2rem); font-weight:500;">
+          独自システムと経験豊富なプロがサポート。<br>
+          <span style="color:#007FFF; font-weight:700;">安心して選べる不動産探しを提供します。</span>
+        </p>
+      </div>
     </div>
     <div class="max-w-6xl mx-auto px-4 pb-14">
       <div>
