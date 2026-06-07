@@ -130,6 +130,26 @@
     .hero-animate {
       animation: hero-in 0.8s ease-out both;
     }
+
+    /* LINEボタン光るエフェクト */
+    @keyframes line-glow {
+      0%, 100% { box-shadow: 0 0 8px rgba(6, 199, 85, 0.4), 0 0 20px rgba(6, 199, 85, 0.2); }
+      50% { box-shadow: 0 0 16px rgba(6, 199, 85, 0.7), 0 0 40px rgba(6, 199, 85, 0.35); }
+    }
+    .line-glow {
+      border-radius: 16px;
+      animation: line-glow 2s ease-in-out infinite;
+    }
+
+    /* チェックするボタン光るエフェクト（青） */
+    @keyframes blue-glow {
+      0%, 100% { box-shadow: 0 0 8px rgba(0, 127, 255, 0.4), 0 0 20px rgba(0, 127, 255, 0.2); }
+      50% { box-shadow: 0 0 16px rgba(0, 127, 255, 0.7), 0 0 40px rgba(0, 127, 255, 0.35); }
+    }
+    .blue-glow {
+      border-radius: 16px;
+      animation: blue-glow 2s ease-in-out infinite;
+    }
   </style>
 </head>
 
@@ -166,7 +186,7 @@
           正直<span style="background:linear-gradient(transparent 60%, #FFEE58 60%);">ちょっと</span> <span style="font-size:1.4em; font-weight:900; color:#1a1a2e;">不安</span><span style="color:#1a1a2e;">。</span>
         </h1>
         <p style="margin:0; line-height:1.15; font-weight:900; color:#007FFF; font-size:clamp(1.1rem, 4.2vw, 2.6rem); white-space:nowrap;">
-          その <span style="font-size:1.4em;">不安</span> まで、<span style="background:linear-gradient(transparent 60%, #FFEE58 60%);"><span style="font-size:2em; font-weight:900;">0</span>にしたい。</span>
+          その <span style="font-size:1.4em;">不安</span> まで、<span style="background:linear-gradient(transparent 60%, #FFEE58 60%);"><span style="font-size:2em; font-weight:900;">0</span>にしたい</span>。
         </p>
         <p style="margin:0.4em 0 0; line-height:1.6; color:#555; font-size:clamp(0.7rem, 2.2vw, 1.2rem); font-weight:500;">
           独自システムと経験豊富なプロがサポート。<br>
@@ -206,27 +226,27 @@
         <!-- LINE CTA + 周辺レポート（ボタンを画像上に絶対配置） -->
         <div class="fade-up relative rounded-3xl" style="background: linear-gradient(180deg, #e8f0fe 0%, #f0f4fa 100%);">
           <!-- LINE CTA（上部に絶対配置） -->
-          <div class="absolute top-[2%] left-[3%] z-10" style="width:60%;">
+          <div class="absolute top-[2%] left-[3%] z-10" style="width:60%; display:flex; flex-direction:column; align-items:center;">
             <p class="font-extrabold whitespace-nowrap" style="color:#1a2b4a; font-size:clamp(0.5rem, 2.5vw, 1.1rem);">
               <span class="text-gray-400">＼</span> 仲介手数料0円か、今すぐわかります <span class="text-gray-400">／</span>
             </p>
-            <a href="https://lin.ee/vJkvN1Z" target="_blank" rel="noopener" class="block hover:opacity-90 transition" style="width:85%;">
-              <img src="assets/LINE_button.png" alt="気になる物件のリンクを送るだけ - LINEで試す" class="w-full rounded-xl shadow-lg" loading="lazy" />
+            <a href="https://lin.ee/vJkvN1Z" target="_blank" rel="noopener" class="block hover:opacity-90 transition line-glow" style="width:85%;">
+              <img src="assets/LINE_button.png" alt="気になる物件のリンクを送るだけ - LINEで試す" class="w-full rounded-xl" loading="lazy" />
             </a>
           </div>
           <!-- 周辺レポート画像（ベース） -->
-          <div class="pt-[3%]">
-            <a href="https://www.zero-check.jp/value-map" target="_blank" rel="noopener" class="block">
-              <img src="assets/report_expend.webp" alt="エリアをクリックするだけで周辺レポートで住みやすさを事前チェック" class="w-full" loading="lazy" />
+          <div class="pt-[1%] overflow-hidden">
+            <a href="https://www.zero-check.jp/value-map" target="_blank" rel="noopener" class="block" onclick="gtag('event','click_valuemap',{event_category:'navigation',event_label:'report_image'});">
+              <img src="assets/report_expend.webp" alt="エリアをクリックするだけで周辺レポートで住みやすさを事前チェック" style="width:115%; max-width:none; margin-left:-7.5%;" loading="lazy" />
             </a>
           </div>
           <!-- チェックするボタン（下部に絶対配置） -->
-          <div class="absolute bottom-[2%] left-[3%] z-10" style="width:60%;">
+          <div class="absolute bottom-[2%] left-[3%] z-10" style="width:60%; display:flex; flex-direction:column; align-items:center;">
             <p class="font-extrabold whitespace-nowrap" style="color:#1a2b4a; font-size:clamp(0.45rem, 2.2vw, 1.1rem);">
               <span class="text-gray-400">＼</span> 会員登録なしで、今すぐ見られる <span class="text-gray-400">／</span>
             </p>
-            <a href="https://www.zero-check.jp/value-map" target="_blank" rel="noopener" class="block hover:opacity-90 transition" style="width:85%;">
-              <img src="assets/report_button.png" alt="口コミ×4項目で住みやすさを判定 - チェックする" class="w-full rounded-xl shadow-lg" loading="lazy" />
+            <a href="https://www.zero-check.jp/value-map" target="_blank" rel="noopener" class="block hover:opacity-90 transition blue-glow" style="width:85%;" onclick="gtag('event','click_valuemap',{event_category:'navigation',event_label:'check_button'});">
+              <img src="assets/report_button.png" alt="口コミ×4項目で住みやすさを判定 - チェックする" class="w-full rounded-xl" loading="lazy" />
             </a>
           </div>
         </div>
@@ -681,7 +701,7 @@
       </a>
       <!-- 物件評価レポート チェック -->
       <a href="https://www.zero-check.jp/value-map" target="_blank" rel="noopener"
-        class="flex items-center justify-center gap-2 rounded-xl py-4 text-white font-bold text-sm shadow-soft hover:opacity-90 transition" style="background-color:#007FFF;">
+        class="flex items-center justify-center gap-2 rounded-xl py-4 text-white font-bold text-sm shadow-soft hover:opacity-90 transition" style="background-color:#007FFF;" onclick="gtag('event','click_valuemap',{event_category:'navigation',event_label:'mobile_footer'});">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15a2.25 2.25 0 012.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/></svg>
         <span class="text-center leading-tight">物件評価レポート<br>チェック</span>
       </a>
