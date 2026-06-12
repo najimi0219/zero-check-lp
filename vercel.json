@@ -1,1 +1,12 @@
-{}
+{
+  "rewrites": [
+    { "source": "/value-map", "destination": "https://zerocheck-report-app.vercel.app/reports/list" },
+    { "source": "/value-map/", "destination": "https://zerocheck-report-app.vercel.app/reports/list" },
+    { "source": "/reports/:path*", "destination": "https://zerocheck-report-app.vercel.app/reports/:path*" },
+    { "source": "/api/:path*", "destination": "https://zerocheck-report-app.vercel.app/api/:path*" },
+    { "source": "/_next/:path*", "destination": "https://zerocheck-report-app.vercel.app/_next/:path*" },
+    { "source": "/logo.png", "destination": "https://zerocheck-report-app.vercel.app/logo.png" },
+    { "source": "/favicon.ico", "destination": "https://zerocheck-report-app.vercel.app/favicon.ico" },
+    { "source": "/sitemap-reports.xml", "destination": "https://zerocheck-report-app.vercel.app/sitemap-reports.xml" }
+  ]
+}
