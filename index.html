@@ -15,26 +15,13 @@
   <!-- ヒーロー画像をプリロード（LCP改善） -->
   <link rel="preload" as="image" href="assets/hero2.webp" type="image/webp" />
 
-  <!-- Google Analytics 4 + Google Ads（統合・1回のみ読み込み） -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-09PKXBST40"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-09PKXBST40');
-    gtag('config', 'AW-18095720223');
-  </script>
-
-  <!-- Microsoft Clarity（遅延読み込み） -->
-  <script type="text/javascript">
-    window.addEventListener('load', function(){
-      (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "woqvvumefq");
-    });
-  </script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-P9Q268R6');</script>
+  <!-- End Google Tag Manager -->
 
   <!-- OGP (必要なら差し替え) -->
   <meta property="og:type" content="website" />
@@ -146,6 +133,10 @@
 </head>
 
 <body class="text-brand.ink pb-20 md:pb-0" style="font-family:'Noto Sans JP', sans-serif;">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9Q268R6"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <!-- Top bar -->
   <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-brand.line">
@@ -228,7 +219,7 @@
           </div>
           <!-- 周辺レポート画像（ベース） -->
           <div class="pt-[1%] overflow-hidden">
-            <a href="https://www.zero-check.jp/value-map" target="_blank" rel="noopener" class="block" onclick="gtag('event','click_valuemap',{event_category:'navigation',event_label:'report_image'});">
+            <a href="https://www.zero-check.jp/value-map" target="_blank" rel="noopener" class="block">
               <img src="assets/report_expend.webp" alt="エリアをクリックするだけで周辺レポートで住みやすさを事前チェック" style="width:115%; max-width:none; margin-left:-7.5%;" loading="lazy" />
             </a>
           </div>
@@ -237,7 +228,7 @@
             <p class="font-extrabold whitespace-nowrap" style="color:#1a2b4a; font-size:clamp(0.45rem, 2.2vw, 1.1rem);">
               <span class="text-gray-400">＼</span> 会員登録なしで、今すぐ見られる <span class="text-gray-400">／</span>
             </p>
-            <a href="https://www.zero-check.jp/value-map" target="_blank" rel="noopener" class="block hover:opacity-90 transition blue-glow" style="width:85%;" onclick="gtag('event','click_valuemap',{event_category:'navigation',event_label:'check_button'});">
+            <a href="https://www.zero-check.jp/value-map" target="_blank" rel="noopener" class="block hover:opacity-90 transition blue-glow" style="width:85%;">
               <img src="assets/report_button.png" alt="口コミ×4項目で住みやすさを判定 - チェックする" class="w-full rounded-xl" loading="lazy" />
             </a>
           </div>
@@ -693,7 +684,7 @@
       </a>
       <!-- 物件評価レポート チェック -->
       <a href="https://www.zero-check.jp/value-map" target="_blank" rel="noopener"
-        class="flex items-center justify-center gap-2 rounded-xl py-4 text-white font-bold text-sm shadow-soft hover:opacity-90 transition" style="background-color:#007FFF;" onclick="gtag('event','click_valuemap',{event_category:'navigation',event_label:'mobile_footer'});">
+        class="flex items-center justify-center gap-2 rounded-xl py-4 text-white font-bold text-sm shadow-soft hover:opacity-90 transition" style="background-color:#007FFF;">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15a2.25 2.25 0 012.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/></svg>
         <span class="text-center leading-tight">物件評価レポート<br>チェック</span>
       </a>
@@ -727,91 +718,7 @@
       });
     });
 
-    // ============================================
-    // Google Ads コンバージョンラベル設定
-    // ※ Google広告管理画面で発行されたラベルに差し替えてください
-    // ============================================
-    var GADS_CONVERSION_ID = 'AW-18095720223';
-    var GADS_LABEL_PHONE = 'A-o4CL71pakcEJ-O27RD';   // 電話コンバージョン
-    var GADS_LABEL_LINE  = 'F4_YCPauvakcEJ-O27RD';    // LINEコンバージョン
-    var GADS_LABEL_MAIL  = 'CWULCLXvpakcEJ-O27RD';    // メール(フォーム送信)コンバージョン
-
-    // GA4 Event Tracking + Google Ads Conversion
-    // ----- 1. メール（お問い合わせフォームリンク）-----
-    document.querySelectorAll('a[href="#form"]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        gtag('event', 'cta_click', {
-          event_category: 'engagement',
-          event_label: btn.textContent.trim()
-        });
-      });
-    });
-
-    // ----- 2. 電話タップ -----
-    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
-      link.addEventListener('click', () => {
-        gtag('event', 'phone_tap', {
-          event_category: 'engagement',
-          event_label: '電話タップ'
-        });
-        // Google Ads コンバージョン（電話）
-        gtag('event', 'conversion', {
-          send_to: GADS_CONVERSION_ID + '/' + GADS_LABEL_PHONE
-        });
-      });
-    });
-
-    // ----- 3. LINEボタンクリック -----
-    document.querySelectorAll('a[href*="lin.ee"]').forEach(link => {
-      link.addEventListener('click', () => {
-        gtag('event', 'line_click', {
-          event_category: 'engagement',
-          event_label: 'LINE友達追加'
-        });
-        // Google Ads コンバージョン（LINE）
-        gtag('event', 'conversion', {
-          send_to: GADS_CONVERSION_ID + '/' + GADS_LABEL_LINE
-        });
-      });
-    });
-
-    // ----- 4. フォーム送信 -----
-    const form = document.querySelector('#form form');
-    if (form) {
-      form.addEventListener('submit', () => {
-        var ec_mail = document.querySelector('[name="email"]').value;
-        var ec_phone = document.querySelector('[name="phone"]').value;
-        gtag('set', 'user_data', {
-            "email": ec_mail,
-            "phone_number": ec_phone
-        });
-
-        gtag('event', 'form_submit', {
-          event_category: 'conversion',
-          event_label: '無料相談フォーム送信'
-        });
-        // Google Ads コンバージョン（メール/フォーム送信）
-        gtag('event', 'conversion', {
-          send_to: GADS_CONVERSION_ID + '/' + GADS_LABEL_MAIL
-        });
-      });
-    }
-
-    // Scroll depth tracking (25%, 50%, 75%, 100%)
-    const scrollMarks = [25, 50, 75, 100];
-    const scrollFired = {};
-    window.addEventListener('scroll', () => {
-      const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-      scrollMarks.forEach(mark => {
-        if (pct >= mark && !scrollFired[mark]) {
-          scrollFired[mark] = true;
-          gtag('event', 'scroll_depth', {
-            event_category: 'engagement',
-            event_label: mark + '%'
-          });
-        }
-      });
-    });
+    // ※ Google Ads / GA4 のイベントトラッキングはGTM側で管理
   </script>
 </body>
 
