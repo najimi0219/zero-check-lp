@@ -23,6 +23,30 @@
   })(window,document,'script','dataLayer','GTM-P9Q268R6');</script>
   <!-- End Google Tag Manager -->
 
+  <!-- Google Ads コンバージョン（gtag直書き：GTMのクリックトリガーは壊れやすいためコードで発火） -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18095720223"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18095720223');
+    function zcConv(label){ try { gtag('event','conversion',{ send_to:'AW-18095720223/'+label }); } catch(e){} }
+    document.addEventListener('DOMContentLoaded', function(){
+      // LINE誘導（友だち追加・相談）
+      document.querySelectorAll('a[href*="lin.ee"]').forEach(function(a){
+        a.addEventListener('click', function(){ zcConv('F4_YCPauvakcEJ-O27RD'); });
+      });
+      // 電話
+      document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
+        a.addEventListener('click', function(){ zcConv('A-o4CL71pakcEJ-O27RD'); });
+      });
+      // 無料相談フォーム送信
+      var form = document.getElementById('contact-form');
+      if (form) form.addEventListener('submit', function(){ zcConv('CWULCLXvpakcEJ-O27RD'); });
+    });
+  </script>
+  <!-- End Google Ads -->
+
   <!-- OGP (必要なら差し替え) -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="ゼロチェック｜仲介手数料最大0円で理想の物件購入" />
